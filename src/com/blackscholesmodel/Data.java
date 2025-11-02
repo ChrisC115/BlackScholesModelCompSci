@@ -1,42 +1,50 @@
 package com.blackscholesmodel;
 import java.util.Scanner;
 
+// Superclass for Calculate
 public class Data {
 
-    Scanner scanner = new Scanner(System.in);
-    
-    System.out.println("What is your call option price? ");
-    double c = scanner.nextDouble(); //Call option Price
+    // Attributes 
+    protected double S;     // Stock price
+    protected double K;     // Strike price
+    protected double r;     // Risk-free rate
+    protected double t;     // Time to expiration (in years)
+    protected double sigma; // Volatility
 
-    System.out.println("What is the current Stock price? ");
-    double s = scanner.nextDouble(); //Current Stock Price
+    //constructor
+    public Data() {}
 
-    System.out.println("What is the Strike price? ");
-    double k = scanner.nextDouble(); //Strike Price
+    //Constructor
+    public Data(double S, double K, double r, double t, double sigma) {
+        this.S = S;
+        this.K = K;
+        this.r = r;
+        this.t = t;
+        this.sigma = sigma;
+    }
 
-    System.out.println("What is the risk-free interest rate (as a decimal)? ");
-    double r = scanner.nextDouble(); //Risk-free Interest Rate
+    // Scanner Method
+    public void getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter current stock price (S): ");
+        S = scanner.nextDouble();
+        System.out.print("Enter strike price (K): ");
+        K = scanner.nextDouble();
+        System.out.print("Enter risk-free interest rate (r as decimal): ");
+        r = scanner.nextDouble();
+        System.out.print("Enter time to expiration (t in years): ");
+        t = scanner.nextDouble();
+        System.out.print("Enter volatility (sigma as decimal): ");
+        sigma = scanner.nextDouble();
+    }
 
-    System.out.println("What is time to expiration (in years)? ");
-    double t = scanner.nextDouble(); //Time till Expiration
-
-    System.out.println("What is the normal standard distribution value? ");
-    double n = scanner.nextDouble(); //Normal Standard Distribution Value
-
-    System.out.println("What is the volatility of the stock(as a decimal)? ");
-    double sigma = scanner.nextDouble(); //Volatility of the Stock
-
-
-    //constructor method:
-    public Data(String species, int id) {
-        this.species = species; 
-        this.id = id; 
-    }    
-        //the first 'this.species' refers to the VARIABLE 'species' in THIS class for each new object.
-        //the second 'species' refers to the PARAMTER, whose value was entered when creating the new object: ex., Pet("cat").  
-
-    //behaviors:
-    public void getSpecies(){
-        System.out.println("This pet is a: " + species + " \nId: " + id);
+    // Print Method
+    public void displayData() {
+        System.out.println("\nOption's Data");
+        System.out.println("Stock Price (S): " + S);
+        System.out.println("Strike Price (K): " + K);
+        System.out.println("Risk-Free Rate (r): " + r);
+        System.out.println("Time to Expiration (t): " + t);
+        System.out.println("Volatility (sigma): " + sigma);
     }
 }
